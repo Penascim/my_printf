@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: penascim <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/06 17:12:49 by penascim          #+#    #+#             */
+/*   Updated: 2023/12/06 18:04:56 by penascim         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_printf.h"
 
@@ -18,8 +29,6 @@ static void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char	*str;
 
-	if ((nmemb) && (size * nmemb) && ((nmemb * size) / nmemb != size))
-		return (NULL);
 	str = malloc(nmemb * size);
 	if (!str)
 		return (NULL);

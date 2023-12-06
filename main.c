@@ -7,6 +7,6 @@ int main(void)
     void *p;
     p = &c;
 
-    ft_pointer(p);
+    ft_printf(p);
     printf("\n%p", p);
 }
