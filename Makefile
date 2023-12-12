@@ -1,4 +1,13 @@
-SRCS = ft_str.c ft_unsigned.c ft_utoa_base.c ft_char.c ft_hex.c ft_int.c ft_itoa.c ft_pointer.c
+CS =	ft_str.c \
+		ft_unsigned.c \
+		ft_utoa_base.c \
+		ft_char.c \
+		ft_hex.c \
+		ft_int.c \
+		ft_itoa.c \
+		ft_pointer.c \
+		ft_printf.c
+
 OBJS = $(SRCS:.c=.o)
 
 RM = rm -rf

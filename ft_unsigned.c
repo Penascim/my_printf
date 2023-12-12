@@ -6,19 +6,19 @@
 /*   By: penascim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:17:29 by penascim          #+#    #+#             */
-/*   Updated: 2023/12/06 17:17:33 by penascim         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:23:01 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_u(unsigned int u)
+int	ft_u(unsigned int u)
 {
-    int     i;
-    char    *tu;
+	int		i;
+	char	*tu;
 
-    tu = ft_utoa_base(u, 10, "0123456789");
-    i = ft_str(tu);
-    free(tu);
-    return (i);
+	tu = ft_utoa_base(u, 10, "0123456789");
+	i = ft_str(tu);
+	free(tu);
+	return (i);
 }

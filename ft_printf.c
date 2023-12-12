@@ -6,25 +6,48 @@
 /*   By: penascim <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 17:13:07 by penascim          #+#    #+#             */
-/*   Updated: 2023/12/06 17:13:10 by penascim         ###   ########.fr       */
+/*   Updated: 2023/12/12 17:43:05 by penascim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(char *fmt, ...)
+int	ft_print_fmt(char fmt, va_list ap)
 {
-
-	va_list	ap;
-	int	i;
 	int	count;
-	
+
+	count = 0;
+	if (fmt == 'c')
+		count += ft_char(va_arg(ap, int));
+	else if (fmt == 's')
+		count += ft_str(va_arg(ap, char *));
+	else if (fmt == 'p')
+		count += ft_pointer(va_arg(ap, void *));
+	else if (fmt == 'd' || fmt == 'i')
+		count += ft_int(va_arg(ap, signed int));
+	else if (fmt == 'u')
+		count += ft_u(va_arg(ap, unsigned int));
+	else if (fmt == 'x')
+		count += ft_hex_lower(va_arg(ap, unsigned int));
+	else if (fmt == 'X')
+		count += ft_hex_upper(va_arg(ap, unsigned int));
+	else if (fmt == '%')
+		count += write(1, "%", 1);
+	return (count);
+}
+
+int	ft_printf(const char *fmt, ...)
+{
+	va_list	ap;
+	int		i;
+	int		count;
+
 	va_start(ap, fmt);
 	i = 0;
 	count = 0;
-	while (fmt[i] != '\0')
+	while (fmt[i])
 	{
-		if (fmt == '%')
+		if (fmt[i] == '%')
 		{
 			count += ft_print_fmt(fmt[i + 1], ap);
 			i++;
@@ -34,31 +57,5 @@ int	ft_printf(char *fmt, ...)
 		i++;
 	}
 	va_end(ap);
-	return (i);
+	return (count);
 }
-
-int	ft_print_fmt(char fmt, va_list)
-{
-	int	count;
-	
-	count = 0;
-	if (fmt == 'c')
-		count += ft_char(va_arg(ap, char));
-	if (fmt == 's')
-		count += ft_str(va_arg(ap, char *));
-	if (fmt == 'p')
-		count += ft_pointer(va_arg(ap, void *));
-	if (fmt == 'd' || fmt == 'i')
-		count += ft_int(va_arg(ap, signed int));	
-	if (fmt == 'u')
-		count += ft_unsigned(va_arg(ap, unsigned int));
-	if (fmt == 'x')
-		count += ft_hex_lower(va_arg(ap, unsigned int));
-	if (fmt == 'X')
-		count += ft_hex_upper(va_arg(ap, unsigned int));
-	if (fmt == '%')
-		count += write(1, "%", 1);
-	return (count);	
-}
-
-
