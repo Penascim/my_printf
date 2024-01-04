@@ -1,4 +1,4 @@
-CS =	ft_str.c \
+SRCS =	ft_str.c \
 		ft_unsigned.c \
 		ft_utoa_base.c \
 		ft_char.c \
@@ -29,3 +29,4 @@ fclean:	clean
 re:	fclean	all
 
 .PHONY:	all clean fclean re
+
